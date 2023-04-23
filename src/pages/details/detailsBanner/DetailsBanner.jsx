@@ -77,7 +77,6 @@ export default function DetailsBanner({ video, crew }) {
                           onClick={() => {
                             setShow(true);
                             setVideoID(video.key);
-                            console.log(video.key);
                           }}
                         >
                           <PlayIcon />

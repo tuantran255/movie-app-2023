@@ -16,11 +16,11 @@ import PageNotFound from "./pages/404/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
-  const currentLanguage = localStorage.getItem("language");
+  const { language } = useSelector((state) => state.home);
   useEffect(() => {
     fetchApiConfig();
     genresCall();
-  }, []);
+  }, [language]);
 
   const fetchApiConfig = async () => {
     try {
@@ -36,8 +36,7 @@ function App() {
     }
   };
 
-  const genresCall = async (language = currentLanguage) => {
-    console.log(language);
+  const genresCall = async () => {
     const endPoints = ["tv", "movie"];
     let allGenres = {};
     try {

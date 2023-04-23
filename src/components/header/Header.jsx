@@ -81,11 +81,11 @@ export default function Header({ genresCall }) {
     if (curentLanguage === "vi") {
       setCurentLanguage("en");
       dispatch(getLanguage("en"));
-      genresCall("en");
+      genresCall();
     } else {
       setCurentLanguage("vi");
       dispatch(getLanguage("vi"));
-      genresCall("vi");
+      genresCall();
     }
   };
 
