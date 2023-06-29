@@ -21,20 +21,20 @@ api.interceptors.request.use(
   }
 );
 
-// const headers = {
-//   Authorization: "Bearer " + TMDB_TOKEN
-// };
+const headers = {
+  Authorization: "Bearer " + TMDB_TOKEN
+};
 
-// export const fetchDataFromAPI = async (url, params) => {
-//   try {
-//     const { data } = await axios.get(BASE_URL + url, {
-//       headers,
-//       params,
-//     });
-//     console.log(data);
-//     return data;
-//   } catch (err) {
-//     console.log(err);
-//     return err;
-//   }
-// };
+export const fetchDataFromAPI = async (url, params) => {
+  try {
+    const { data } = await axios.get(BASE_URL + url, {
+      headers,
+      params,
+    });
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};

@@ -1,5 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -17,12 +17,8 @@ import PageNotFound from "./pages/404/PageNotFound";
 function App() {
   const dispatch = useDispatch();
   const { language } = useSelector((state) => state.home);
-  useEffect(() => {
-    fetchApiConfig();
-    genresCall();
-  }, [language]);
 
-  const fetchApiConfig = async () => {
+  const fetchApiConfig = useCallback(async () => {
     try {
       let { data } = await api.get("/configuration");
       const url = {
@@ -34,9 +30,9 @@ function App() {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [dispatch]);
 
-  const genresCall = async () => {
+  const genresCall = useCallback(async () => {
     const endPoints = ["tv", "movie"];
     let allGenres = {};
     try {
@@ -58,7 +54,12 @@ function App() {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [dispatch, language]);
+
+  useEffect(() => {
+    fetchApiConfig();
+    genresCall();
+  }, [fetchApiConfig, genresCall]);
 
   return (
     <BrowserRouter>
