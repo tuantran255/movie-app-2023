@@ -7,7 +7,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import "./style.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import logo from "../../assets/images/movix-logo.svg";
+import logo from "../../assets/images/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getLanguage } from "../../redux/slices/homeSlice";
 
@@ -99,6 +99,7 @@ export default function Header({ genresCall }) {
           }}
         >
           <img src={logo} alt="" />
+          <span>Movie</span>
         </div>
         <ul className="menuItems">
           <li
